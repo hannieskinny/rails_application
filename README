@@ -9,7 +9,7 @@ App should allow:
 - creation of admin users
 - only admin users can delete/add/edit/update more people can cars
 
-You have to create a branch starting from first commit of the repo and you will have to use that branch as your integration branch (that means all branches you create from that branch will be merged back to it).
+You have to create a branch starting from the commit of the repo that says 'START' and you will have to use that branch as your integration branch (that means all branches you create from that branch will be merged back to it).The name of your integration branch should be with next format <first_name>_<last_name>, that means that if your name is 'Pedro Picapiedra' your integration branch's name should be pedro_picapiedra.
 
 You can use all gems you saw during this week (cancan, bcrypt-ruby, etc).
 
