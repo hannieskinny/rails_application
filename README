@@ -1,0 +1,30 @@
+The Rules:
+
+You have to create an app that has 2 types of resources: Users and Cars.
+
+App should allow:
+- users authentication
+- CRUD for users (a user has many cars)
+- CRUD for cars (a car belongs to a user)
+- creation of admin users
+- only admin users can delete/add/edit/update more people can cars
+
+You have to create a branch starting from first commit of the repo and you will have to use that branch as your integration branch (that means all branches you create from that branch will be merged back to it).
+
+You can use all gems you saw during this week (cancan, bcrypt-ruby, etc).
+
+What you can't do:
+* Use scaffolding
+
+What we are going to evaluate:
+- Nested resources
+- Authentication
+- Basic access control and/or Fine-grained access control
+Plus:
+- quality of code
+- test coverage of code
+- git structure
+- commits description
+
+
+You have from 10am to 2pm to finish this app unless another instruction is given to you. Good luck.
