@@ -11,4 +11,5 @@ RailsExam::Application.routes.draw do
     end
   end
   resources :users
+  get "/signin", to: "sessions#create"
 end
