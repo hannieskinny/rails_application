@@ -3,6 +3,7 @@ class Car < ActiveRecord::Base
   has_many :assets
   accepts_nested_attributes_for :assets
   has_many :comments
+  belongs_to :user
   
   def searcher
     label :tag, :from => :tags, :field => :name
@@ -29,5 +30,6 @@ class Car < ActiveRecord::Base
         end 
       end
     end
+
 end
 
