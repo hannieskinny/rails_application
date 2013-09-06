@@ -1,12 +1,14 @@
 class Car < ActiveRecord::Base
+  def searcher
+    label :tag, :from => :tags, :field => :name
+  end
+  
   validates :brand, :presence => true
   has_many :assets
   accepts_nested_attributes_for :assets
   has_many :comments
-  
-  def searcher
-    label :tag, :from => :tags, :field => :name
-  end
+  mount_uploader :asset, AssetUploader
+  belongs_to :user
 
   belongs_to :state
   attr_accessor :tag_names
@@ -29,5 +31,6 @@ class Car < ActiveRecord::Base
         end 
       end
     end
+
 end
 
