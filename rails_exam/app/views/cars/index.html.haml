@@ -1,0 +1,9 @@
+%ul
+  - @car.each do |car|
+    %li
+      #{car.brand}
+      = link_to 'Edit', edit_car_path(car)
+      = link_to 'Destroy', car, method: :delete,
+      data: { confirm: 'Are you sure?' }
+%p
+  = link_to "New Car", new_car_path
