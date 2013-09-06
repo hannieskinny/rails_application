@@ -1,11 +1,2 @@
-%h2 New Project
-= form_for(@car) do |f|
-  %p
-    = f.label :brand
-    %br
-    = f.text_field :brand
-  %p
-    = f.label :year
-    %br
-    = f.text_field :year
-  = f.submit
+%h2 New Car
+= render 'form'
