@@ -1,1 +1,6 @@
-= link_to "New Car", new_car_path
+%ul
+  - @car.each do |car|
+    %li
+      #{car.brand}
+%p
+  = link_to "New Car", new_car_path
