@@ -1,0 +1,10 @@
+= form_for [@car, @comment] do |f|
+  - if flash[:alert]
+    .alert.alert-danger
+      %strong
+        = flash[:alert]
+  %p
+    = f.label :text
+    %br
+    = f.text_area :text, :class => "form-control"
+  = f.submit "Create comment", :id => 'create-comment'
