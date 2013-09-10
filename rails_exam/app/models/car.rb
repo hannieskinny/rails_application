@@ -9,8 +9,6 @@ class Car < ActiveRecord::Base
   attr_accessor :tag_names
   has_and_belongs_to_many :tags
   before_create :associate_tags
-  has_many :assets
-  accepts_nested_attributes_for :assets
   
   def searcher
     label :tag, :from => :tags, :field => :name
