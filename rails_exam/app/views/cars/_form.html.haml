@@ -1,10 +1,14 @@
-= form_for(@car) do |f|
-  %p
-    = f.label :brand
-    %br
-    = f.text_field :brand
-  %p
-    = f.label :year
-    %br
-    = f.text_field :year
-  = f.submit
+#cars
+  = form_for [@car], html: { multipart: true } do |f|
+    %p
+      = f.label :brand
+      %br
+      = f.text_field :brand
+    %p
+      = f.label :year
+      %br
+      = f.text_field :year
+    %p
+      = f.label :asset, "File"
+      = f.file_field :asset
+    = f.submit 'Create car',:id => "create-car"
