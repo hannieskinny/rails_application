@@ -11,4 +11,10 @@
     %p
       = f.label :asset, "File"
       = f.file_field :asset
+    %p
+      = f.label :asset, "File"
+      = f.file_field :asset,  :id => "car_asset2"
+    %p
+      = f.label :asset, "File"
+      = f.file_field :asset,  :id => "car_asset3"
     = f.submit 'Create car',:id => "create-car"
