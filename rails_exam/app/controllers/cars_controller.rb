@@ -5,6 +5,7 @@ class CarsController < ApplicationController
   
   def new
     @car = Car.new
+    3.times { @car.assets.build }
   end
 
   def create
@@ -41,6 +42,6 @@ class CarsController < ApplicationController
 
 private
   def car_params
-    params.require(:car).permit(:brand, :year, :asset)
+    params.require(:car).permit(:brand, :year, assets_attributes: [:asset])
   end
 end
