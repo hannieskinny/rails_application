@@ -1,8 +1,9 @@
 %br 
 #cars
   - if flash[:notice]
-    %p{class: 'notice'}
-      = flash[:notice]
+    .notice.alert.alert-warning
+      %strong
+        = flash[:notice]
   = simple_format(@car.brand)
   - if @car.assets.present?
     %h3 Images
