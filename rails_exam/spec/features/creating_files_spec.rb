@@ -6,7 +6,7 @@ feature "Add attachment files" do
     fill_in "car_year", with: "1990"
     attach_file "car_asset", "spec/fixtures/car.JPG"
     click_button "create-car"
-    expect(page).to have_content("Car has been created.")
+    expect(page).to have_content("Car has been created")
     within(".asset") do
       expect(page).to have_content("car.JPG")
     end 
