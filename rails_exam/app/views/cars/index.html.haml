@@ -1,9 +1,13 @@
-%ul
+%br
+%table.table.table-striped
   - @car.each do |car|
-    %li
-      #{car.brand}
-      = link_to 'Edit', edit_car_path(car)
-      = link_to 'Destroy', car, method: :delete,
+    %tr
+      %td
+        = link_to "#{car.brand}", car_path(car)
+      %td
+        = link_to 'Edit', edit_car_path(car)
+      %td
+        = link_to 'Destroy', car, method: :delete,
       data: { confirm: 'Are you sure?' }
 %p
-  = link_to "New Car", new_car_path
+  = link_to "New Car", new_car_path, class: "btn btn-default"
