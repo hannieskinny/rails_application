@@ -1,3 +1,5 @@
 RailsExam::Application.routes.draw do
-  resources :cars
+  resources :cars do
+    resources :comments
+  end
 end
