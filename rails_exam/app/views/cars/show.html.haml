@@ -1,3 +1,16 @@
-%p #{@car.brand}
-%p #{@car.year}
+%br 
+#cars
+- if flash[:notice]
+  %p{class: 'notice'}
+    = flash[:notice]
+  = simple_format(@car.brand)
+  - if @car.asset.present?
+    %h3 Image
+    .asset
+      = image_tag(@car.asset.url, class: "img-rounded col-lg-4")
+      %p
+        = link_to File.basename(@car.asset.path), @car.asset.url
+      %p
+        %small
+          = number_to_human_size(@car.asset.size)
 = link_to 'Back', cars_path
