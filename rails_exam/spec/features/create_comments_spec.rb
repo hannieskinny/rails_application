@@ -1,14 +1,16 @@
 require 'spec_helper'
 
 feature "Creating comments" do
-  let!(:car) { FactoryGirl(:car) }
+  context 'Create car' do
+    let!(:car){ FactoryGirl.create(:car) }
+  end
   before do
-    visit cars_path    
-    click_link car.brand
+    visit car_path(car)
+    #click_link car.brand
   end
 
   scenario "Creating a comment" do
-    fill_in "Text", :with => "Added a comment!"
+    fill_in "comment_text", :with => "Added a comment!"
     click_button "create-comment"
     page.should have_content("Comment has been created.")
       within("#comments") do
