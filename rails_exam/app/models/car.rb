@@ -5,14 +5,16 @@ class Car < ActiveRecord::Base
   has_many :comments
   belongs_to :user
   
-  def searcher
-    label :tag, :from => :tags, :field => :name
-  end
-
   belongs_to :state
   attr_accessor :tag_names
   has_and_belongs_to_many :tags
   before_create :associate_tags
+  has_many :assets
+  accepts_nested_attributes_for :assets
+  
+  def searcher
+    label :tag, :from => :tags, :field => :name
+  end
 
   def tag_names
     @tag_names
@@ -30,6 +32,7 @@ class Car < ActiveRecord::Base
         end 
       end
     end
+
 
 end
 
