@@ -8,6 +8,7 @@ gem 'sqlite3'
 gem 'pg'
 gem 'carrierwave'
 gem 'pry'
+gem 'factory_girl'
 # Use SCSS for stylesheets
 gem 'haml'
 
