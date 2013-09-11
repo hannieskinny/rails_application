@@ -8,6 +8,8 @@
       = f.label :year
       %br
       = f.text_field :year
+    %p
+      = render "tags/form", :f => f
     - number = 0
     = f.fields_for :assets do |asset|
       %p
