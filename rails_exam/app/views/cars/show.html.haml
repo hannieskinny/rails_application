@@ -22,5 +22,6 @@
     = render @car.comments.select(&:persisted?)
   - else
     .alert.alert-danger
-      There are no comments for this ticket.
+      There are no comments for this car.
 = render 'comments/form'
+= render @car.state if @car.state
