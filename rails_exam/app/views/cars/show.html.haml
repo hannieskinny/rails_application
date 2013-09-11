@@ -15,7 +15,7 @@
         %p
           %small
             = number_to_human_size(asset.asset.size)
-= link_to 'Back', cars_path
+= link_to 'Back', cars_path, class: "btn btn-danger"
 %h3 Comments
 #comments
   - if @car.comments.exists?
@@ -24,4 +24,5 @@
     .alert.alert-danger
       There are no comments for this car.
 = render 'comments/form'
-= render @car.state if @car.state
+.alert.alert-success{style: "margin-top: 2%"}
+  = render @car.state if @car.state
