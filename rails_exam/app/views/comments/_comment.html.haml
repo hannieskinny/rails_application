@@ -1,3 +1,8 @@
 .well
   = div_for(comment) do
     = simple_format(comment.text)
+    %p
+      .pull-left
+        State:
+      = state_for(comment)
+
