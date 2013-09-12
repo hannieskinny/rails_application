@@ -1,4 +1,8 @@
 class Car < ActiveRecord::Base
+  searcher do
+    label :tag, :from => :tags, :field => :name
+  end
+
   validates :brand, :presence => true
   has_many :assets
   accepts_nested_attributes_for :assets
@@ -10,10 +14,7 @@ class Car < ActiveRecord::Base
   has_and_belongs_to_many :tags
   before_create :associate_tags
   
-  def searcher
-    label :tag, :from => :tags, :field => :name
-  end
-
+ 
   def tag_names
     @tag_names
   end
