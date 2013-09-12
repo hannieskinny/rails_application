@@ -1,4 +1,7 @@
 RailsExam::Application.routes.draw do
+  resources :users
+  get "/signin", to: "sessions#new"
+  post "/signin", to: "sessions#create"
   resources :cars do
     resources :comments
     resources :tags do
@@ -10,6 +13,4 @@ RailsExam::Application.routes.draw do
       get :search
     end
   end
-  resources :users
-  get "/signin", to: "sessions#create"
 end
