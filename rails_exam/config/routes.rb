@@ -1,4 +1,5 @@
 RailsExam::Application.routes.draw do
+  root :to => "cars#index"
   resources :users
   get "/signin", to: "sessions#new"
   post "/signin", to: "sessions#create"
