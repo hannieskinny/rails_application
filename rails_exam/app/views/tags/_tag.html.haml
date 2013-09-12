@@ -1,2 +1,4 @@
-.tag.alert.alert-info.col-lg-1{style: "margin-right: 10px"}
-  = tag.name
+.tag.alert.alert-info.fade.in.col-lg-1{style: "margin-right: 10px"}
+  = link_to "×", remove_car_tag_path(@car, tag), :method => :delete, :remote => true, :id => "delete-#{tag.name.parameterize}", :class => "close", "data-dismiss" => "alert", "aria-hidden" => "true"
+  %span
+    = tag.name
