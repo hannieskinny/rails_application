@@ -20,6 +20,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @comment = @car.comments.build
+    @cars = Car.all
   end
 
   def edit
@@ -39,6 +40,10 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     @car.destroy
     redirect_to cars_path
+  end
+
+  def search
+    @cars = Car.search(params[:search])
   end
 
 private

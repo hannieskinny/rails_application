@@ -19,6 +19,8 @@
   = label_tag "search"
   = text_field_tag "search", params[:search]
   = submit_tag "Search"
+- @cars.each do |car|
+  %li #{car.brand}
 #tags{style: "overflow: hidden"}
   %h3 Tags
   = render @car.tags

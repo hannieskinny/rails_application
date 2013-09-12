@@ -3,6 +3,11 @@ class Car < ActiveRecord::Base
   has_many :assets
   accepts_nested_attributes_for :assets
   has_many :comments
+  
+  def searcher
+    label :tag, :from => :tags, :field => :name
+  end
+
   belongs_to :state
   attr_accessor :tag_names
   has_and_belongs_to_many :tags
