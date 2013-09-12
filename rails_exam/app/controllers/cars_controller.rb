@@ -48,7 +48,8 @@ class CarsController < ApplicationController
   end
 
   def search
-    @cars = Car.search(params[:search])
+    @car = Car.search("tag:#{params['search']}")
+    render "index"
   end
 
 private
