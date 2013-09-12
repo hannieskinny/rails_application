@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
 
   def create
     user = User.where(:name => params[:signin][:name]).first
-    if user && user.authenticate(params[:signin][:password])
+    if current_user
       session[:user_id] = user.id
       flash[:notice] = "Signed in successfully."
-      redirect_to root_url
+      redirect_to cars_path
     else
       flash[:error] = "You can't Sign in"
       render :new
