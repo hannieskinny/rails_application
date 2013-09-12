@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_signin!
-   if current_user
+   if !current_user 
      session[:intended_destination] = request.fullpath
      flash[:alert] = "You need to sign in or sign up before continuing."
      redirect_to signin_url
