@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.where(:name => params[:signin][:name]).first
-    if current_user
+    if !current_user
       session[:user_id] = user.id
       flash[:notice] = "Signed in successfully."
       redirect_to cars_path
@@ -11,4 +11,11 @@ class SessionsController < ApplicationController
       render :new
     end 
   end
+
+  def destroy
+    session[:user_id] = nil
+    flash[:notice] = "Signed out successfully."
+    redirect_to root_url
+  end
+
 end
