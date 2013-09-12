@@ -15,6 +15,10 @@
         %p
           %small
             = number_to_human_size(asset.asset.size)
+= form_tag search_cars_path(@car), :method => :get do
+  = label_tag "search"
+  = text_field_tag "search", params[:search]
+  = submit_tag "Search"
 #tags{style: "overflow: hidden"}
   %h3 Tags
   = render @car.tags
