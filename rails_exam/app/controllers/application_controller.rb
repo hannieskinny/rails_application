@@ -7,4 +7,12 @@ class ApplicationController < ActionController::Base
   def find_states
     @states = State.all
   end
+  
+  def require_signin!
+   if current_user == nil
+     session[:intended_destination] = request.fullpath
+     flash[:alert] = "You need to sign in or sign up before continuing."
+     redirect_to signin_url
+   end
+  end
 end
