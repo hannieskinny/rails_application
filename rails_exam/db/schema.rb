@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912164527) do
+ActiveRecord::Schema.define(version: 20130912173438) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20130912164527) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.boolean  "admin"
   end
 
 end
