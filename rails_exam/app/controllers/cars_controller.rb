@@ -33,7 +33,8 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
-    if @car.update(car_params)
+    @car.user = user
+    if @car.update_attributes(car_params)
       redirect_to car_path
     else
       render 'edit'
@@ -52,6 +53,6 @@ class CarsController < ApplicationController
 
 private
   def car_params
-    params.require(:car).permit(:brand, :year, :tag_names, assets_attributes: [:asset])
+    params.require(:car).permit(:brand, :year, :tag_names, :user_id, assets_attributes: [:asset])
   end
 end
