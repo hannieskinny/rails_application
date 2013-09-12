@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  before_action :require_signin!, except: [:show, :index]
+
   def index
     @car = Car.all
   end
@@ -10,6 +12,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.user = current_user
     if @car.save
       Notifier.user_created(@user).deliver
       flash[:notice] = "Car has been created"
