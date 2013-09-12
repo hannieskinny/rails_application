@@ -6,7 +6,7 @@
         = flash[:notice]
   = simple_format(@car.brand)
   %span#author "Created by"
-    = @car.user.email
+  //= @car.user.email
   - if @car.assets.present?
     %h3 Images
     .assets.col-lg-12
