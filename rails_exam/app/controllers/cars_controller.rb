@@ -14,7 +14,7 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     if @car.save
-      Notifier.user_created(@user).deliver
+      Notifier.user_created(@car.user).deliver
       flash[:notice] = "Car has been created"
       redirect_to @car
     else
