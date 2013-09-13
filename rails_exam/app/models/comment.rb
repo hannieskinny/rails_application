@@ -19,7 +19,7 @@ private
     self.car.save!
   end
 
-  def associate_tags_with_ticket
+  def associate_tags_with_car
     if tag_names
       tags = tag_names.split(" ").map do |name|
         Tag.find_or_create_by_name(name)
