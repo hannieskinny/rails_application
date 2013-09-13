@@ -9,6 +9,7 @@ gem 'pg'
 gem 'carrierwave'
 gem 'pry'
 gem 'factory_girl'
+gem 'rack-test'
 # Use SCSS for stylesheets
 gem 'haml'
 

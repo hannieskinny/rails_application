@@ -165,6 +165,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry
+  rack-test
   rails (= 4.0.0)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
