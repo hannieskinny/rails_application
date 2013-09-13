@@ -4,7 +4,6 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
     @car.tags -= [@tag]
     @car.save
-    #render :nothing => true
   end
 end
 
