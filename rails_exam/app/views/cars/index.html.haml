@@ -1,4 +1,8 @@
 %br
+= form_tag search_cars_path(@car), :method => :get do
+  = label_tag "search"
+  = text_field_tag "search", params[:search]
+  = submit_tag "Search"
 %table.table.table-striped
   %thead
     %tr
@@ -7,10 +11,13 @@
     %tr
       %td
         = link_to "#{car.brand}", car_path(car)
-      %td
-        = link_to 'Edit', edit_car_path(car)
-      %td
-        = link_to 'Destroy', car, method: :delete,
-      data: { confirm: 'Are you sure?' }
-%p
-  = link_to "New Car", new_car_path, class: "btn btn-default"
+      - admins_only do
+        %td
+          = link_to 'Edit', edit_car_path(car)
+        %td
+          = link_to 'Destroy', car, method: :delete,
+        data: { confirm: 'Are you sure?' }
+- admins_only do
+  %p
+    = link_to "New Car", new_car_path, class: "btn btn-default"
+    = link_to "Back", root_url, class: "btn btn-danger pull-right"

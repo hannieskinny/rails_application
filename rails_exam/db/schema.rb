@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911205439) do
+ActiveRecord::Schema.define(version: 20130912173438) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 20130911205439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "state_id"
+    t.integer  "user_id"
   end
 
   add_index "cars", ["state_id"], name: "index_cars_on_state_id"
+  add_index "cars", ["user_id"], name: "index_cars_on_user_id"
 
   create_table "cars_tags", id: false, force: true do |t|
     t.integer "tag_id"
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20130911205439) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.boolean  "admin"
   end
 
 end

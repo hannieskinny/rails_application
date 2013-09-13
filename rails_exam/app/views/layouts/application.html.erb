@@ -7,10 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
 <%= link_to "Sign in", signin_path %>
 <%= link_to "Sign up", new_user_path %>
   <div class="container" style = "margin-bottom: 5%">
     <%= yield %>
   </div>
+=======
+  <ul class="nav nav-pills">  
+    <li><%= link_to "Sign up", new_user_path %>
+    <% if current_user %>
+      <li><%=link_to current_user.email, "javascript:void();" %></li>
+      <li><%= link_to "Sign out", signout_path, method: :delete %></li>
+    <% end %>
+    <% if !current_user %>
+      <li><%= link_to "Sign in", signin_path %>
+    <% end %>
+  </ul>
+<div class="container" style = "margin-bottom: 5%">
+  <%= yield %>
+</div>
+>>>>>>> add-authentication-in-project
 </body>
 </html>

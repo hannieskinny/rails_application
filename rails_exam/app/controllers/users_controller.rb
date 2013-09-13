@@ -20,7 +20,11 @@ class UsersController < ApplicationController
 
 private
   def user_params
+<<<<<<< HEAD
     params.require(:user).permit(:name, :password, :password_confirmation)
+=======
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+>>>>>>> add-authentication-in-project
   end
 
 end

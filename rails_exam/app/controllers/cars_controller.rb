@@ -1,4 +1,6 @@
 class CarsController < ApplicationController
+  before_action :authorize_admin!, except: [:index, :show]
+  #before_action :set_car, only: [:show, :edit, :update, :destroy]
   def index
     @car = Car.all
   end
@@ -10,7 +12,9 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.user = current_user
     if @car.save
+      Notifier.user_created(@car.user).deliver
       flash[:notice] = "Car has been created"
       redirect_to @car
     else
@@ -29,7 +33,8 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
-    if @car.update(car_params)
+    @car.user = user
+    if @car.update_attributes(car_params)
       redirect_to car_path
     else
       render 'edit'
@@ -43,11 +48,20 @@ class CarsController < ApplicationController
   end
 
   def search
-    @cars = Car.search(params[:search])
+    @car = Car.search("tag:#{params['search']}")
+    render "index"
   end
 
 private
   def car_params
-    params.require(:car).permit(:brand, :year, :tag_names, assets_attributes: [:asset])
+    params.require(:car).permit(:brand, :year, :tag_names, :user_id, assets_attributes: [:asset])
   end
+
+  def authorize_admin!
+    require_signin!
+    unless current_user.admin?
+      flash[:alert] = "You must be an admin to do that."
+    end 
+  end
+
 end
