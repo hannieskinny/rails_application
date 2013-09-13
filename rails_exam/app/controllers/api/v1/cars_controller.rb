@@ -2,8 +2,7 @@ class Api::V1::CarsController < Api::V1::BaseController
   before_filter :find_car, :only => [:show, :update, :destroy]
   
   def index
-    #respond_with(Car.all)
-    respond_with(Car.all.where("user_id = ?", current_user))
+    respond_with(current_user.cars)
   end
 
   def create
