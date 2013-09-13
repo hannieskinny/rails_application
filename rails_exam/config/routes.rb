@@ -17,4 +17,10 @@ RailsExam::Application.routes.draw do
   end
   resources :users
   get "/signin", to: "sessions#create"
+
+  namespace :api do
+    namespace :v1 do
+      resources :cars
+    end
+  end
 end
