@@ -33,7 +33,6 @@ class CarsController < ApplicationController
 
   def update
     @car = Car.find(params[:id])
-    @car.user = user
     if @car.update_attributes(car_params)
       redirect_to car_path
     else
