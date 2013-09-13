@@ -60,6 +60,11 @@ ActiveRecord::Schema.define(version: 20130912173438) do
     t.string "name"
   end
 
+  create_table "tags_cars", id: false, force: true do |t|
+    t.integer "tag_id"
+    t.integer "car_id"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
