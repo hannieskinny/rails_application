@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_action :authorize_admin!, except: [:index, :show]
-  #before_action :set_car, only: [:show, :edit, :update, :destroy]
+  
   def index
     @car = Car.all
   end
