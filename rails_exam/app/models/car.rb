@@ -20,6 +20,10 @@ class Car < ActiveRecord::Base
   def tag_names=(names)
     @tag_names = names
   end
+  
+  def last_car
+    cars.last
+  end
 
   private
     def associate_tags
