@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  has_secure_password
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable
   has_many :cars
-  before_save :authorize_admin!
 end
