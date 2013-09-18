@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(name:auth.extra.raw_info.name,
+      user = User.create(name:auth.info.name,
                           provider:auth.provider,
                           uid:auth.uid,
                           email:auth.info.email,
@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
                         )
     end
     user
+  end
+
+  def self.build_twitter_auth_cookie_hash data
+    {
+      :provider => data.provider, :uid => data.uid.to_i,
+      :access_token => data.credentials.token, :access_secret => data.credentials.secret,
+      :user_name => data.name,
+
+    }
   end
 
   def self.new_with_session(params, session)
