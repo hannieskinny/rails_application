@@ -188,6 +188,7 @@ DEPENDENCIES
   haml
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth
   omniauth-twitter!
   pg
   pry
