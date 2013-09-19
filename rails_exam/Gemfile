@@ -13,7 +13,7 @@ gem 'factory_girl'
 gem 'rack-test'
 # Use SCSS for stylesheets
 gem 'haml'
-
+gem 'kaminari'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'pry'
 # Use Uglifier as compressor for JavaScript assets
