@@ -16,7 +16,8 @@
     <% if !current_user %>
       <li><%= link_to "Sign in", new_user_session_path %>
       <li><%= auth_provider(:twitter) %>
-      <li><%= auth_provider(:twitter) %>
+      <li><%= auth_provider(:github) %>
+
     <% end %>
   </ul>
 <div class="container" style = "margin-bottom: 5%">
