@@ -3,6 +3,8 @@ class CarsController < ApplicationController
   
   def index
     @car = Car.all
+    @cars = Car.page(params[:page]).per(3)
+
   end
   
   def new
