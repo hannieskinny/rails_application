@@ -3,11 +3,12 @@
   = label_tag "search"
   = text_field_tag "search", params[:search]
   = submit_tag "Search"
+
 %table.table.table-striped
   %thead
     %tr
       %th Cars
-  - @car.each do |car|
+  - @cars.each do |car|
     %tr
       %td
         = link_to "#{car.brand}", car_path(car)
@@ -17,6 +18,7 @@
         = link_to 'Destroy', car, method: :delete,
       data: { confirm: 'Are you sure?' }
 
+= paginate @cars
 - if user_signed_in?
   %p
     = link_to "New Car", new_car_path, class: "btn btn-default"
