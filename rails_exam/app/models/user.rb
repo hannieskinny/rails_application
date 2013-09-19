@@ -7,34 +7,13 @@ class User < ActiveRecord::Base
   has_many :cars
   before_save :ensure_authentication_token
 
-  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
+  def self.find_for_twitter_oauth(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(name:auth.info.name,
-                          provider:auth.provider,
-                          uid:auth.uid,
-                          email:auth.info.email,
-                          password:Devise.friendly_token[0,20]
-                        )
+      user = User.create(name:auth.info.name, provider:auth.provider, uid:auth.uid, email:"#{auth.info.nickname}@example.com", password:Devise.friendly_token[0,20])
+      user.save!
     end
     user
-  end
-
-  def self.build_twitter_auth_cookie_hash data
-    {
-      :provider => data.provider, :uid => data.uid.to_i,
-      :access_token => data.credentials.token, :access_secret => data.credentials.secret,
-      :user_name => data.name,
-
-    }
-  end
-
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.twitter_data"] && session["devise.twitter_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
-      end
-    end
   end
 
 end
