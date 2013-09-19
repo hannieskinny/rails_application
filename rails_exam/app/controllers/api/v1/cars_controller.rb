@@ -3,7 +3,7 @@ class Api::V1::CarsController < Api::V1::BaseController
   
   def index
     #respond_with(current_user.cars)
-    respond_with(Car.all)
+    respond_with(Car.page(params[:page]).per(3))
   end
 
   def create
