@@ -14,9 +14,9 @@
       <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
     <% end %>
     <% if !current_user %>
-      <li><%= link_to "Sign in", new_user_session_path %>
-      <li><%= auth_provider(:twitter) %>
-      <li><%= auth_provider(:github) %>
+      <li><%= link_to "Sign in", new_user_session_path %></li>
+      <li><%= auth_provider(:twitter) %></li>
+      <li><%= auth_provider(:github) %></li>
 
     <% end %>
   </ul>
