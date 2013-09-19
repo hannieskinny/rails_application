@@ -2,7 +2,8 @@ class Api::V1::CarsController < Api::V1::BaseController
   before_filter :find_car, :only => [:show, :update, :destroy]
   
   def index
-    respond_with(current_user.cars)
+    #respond_with(current_user.cars)
+    respond_with(Car.all)
   end
 
   def create

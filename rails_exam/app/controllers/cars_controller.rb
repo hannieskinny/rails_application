@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  before_action :authorize_admin!, except: [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
   
   def index
     @car = Car.all
@@ -54,13 +54,6 @@ class CarsController < ApplicationController
 private
   def car_params
     params.require(:car).permit(:brand, :year, :tag_names, :user_id, assets_attributes: [:asset])
-  end
-
-  def authorize_admin!
-    require_signin!
-    unless current_user.admin?
-      flash[:alert] = "You must be an admin to do that."
-    end 
   end
 
 end

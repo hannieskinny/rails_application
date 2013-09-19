@@ -11,13 +11,13 @@
     %tr
       %td
         = link_to "#{car.brand}", car_path(car)
-      - admins_only do
-        %td
-          = link_to 'Edit', edit_car_path(car)
-        %td
-          = link_to 'Destroy', car, method: :delete,
-        data: { confirm: 'Are you sure?' }
-- admins_only do
+      %td
+        = link_to 'Edit', edit_car_path(car)
+      %td
+        = link_to 'Destroy', car, method: :delete,
+      data: { confirm: 'Are you sure?' }
+
+- if user_signed_in?
   %p
     = link_to "New Car", new_car_path, class: "btn btn-default"
     = link_to "Back", root_url, class: "btn btn-danger pull-right"
