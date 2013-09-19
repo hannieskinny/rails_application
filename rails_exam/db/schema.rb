@@ -11,11 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130917174826) do
+ActiveRecord::Schema.define(version: 20130918194255) do
 
   create_table "assets", force: true do |t|
     t.string   "asset"
     t.integer  "car_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authentications", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "index"
+    t.string   "create"
+    t.string   "destroy"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,6 +128,8 @@ ActiveRecord::Schema.define(version: 20130917174826) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "authentication_token"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
