@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable, :omniauth_providers => [:twitter]
+         :recoverable, :rememberable, :trackable, :validatable, :token_authenticatable, :omniauthable
   has_many :cars
   before_save :ensure_authentication_token
 
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_for_github(auth)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
-      user = User.create(name:auth.info.name, provider:auth.provider, uid:auth.uid, email:"#{auth.info.nickname}@example.com", password:Devise.friendly_token[0,20])
+      user = User.create(name:auth.info.name, provider:auth.provider, uid:auth.uid, email:auth.info.email, password:Devise.friendly_token[0,20])
       user.save!
     end
     user
