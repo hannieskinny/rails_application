@@ -16,4 +16,13 @@ class User < ActiveRecord::Base
     user
   end
 
+  def self.find_or_create_for_github(auth)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(name:auth.info.name, provider:auth.provider, uid:auth.uid, email:"#{auth.info.nickname}@example.com", password:Devise.friendly_token[0,20])
+      user.save!
+    end
+    user
+  end
+
 end
