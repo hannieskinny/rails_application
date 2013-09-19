@@ -1,6 +1,6 @@
 class CarsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  caches_action :index
+  #caches_action :index
   #caches_action :index, :cache_path => (proc do
     #cars_path("/#{current_user.id}/#{params[:page] || 1}")
   #end)
@@ -20,10 +20,11 @@ class CarsController < ApplicationController
     @car = Car.new(car_params)
     @car.user = current_user
     if @car.save
-      Notifier.send_email_to(@car.user).deliver
+      Notifier.delay.send_email_to(@car.user)
       flash[:notice] = "Car has been created"
       redirect_to @car
     else
+
     end
   end
  
