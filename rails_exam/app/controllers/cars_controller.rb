@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
+  caches_page :show
   
   def index
     @car = Car.all
