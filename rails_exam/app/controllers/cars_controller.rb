@@ -1,9 +1,9 @@
 class CarsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  #caches_action :index
-  #caches_action :index, :cache_path => (proc do
-    #cars_path("/#{current_user.id}/#{params[:page] || 1}")
-  #end)
+  
+  caches_action :index, :cache_path => (proc do
+    cars_path("/#{current_user.id}/#{params[:page] || 1}")
+  end)
   
   def index
     @car = Car.all
